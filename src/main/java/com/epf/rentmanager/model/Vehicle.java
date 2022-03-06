@@ -32,6 +32,10 @@ public class Vehicle {
 		super();
 	}
 	
+	public Vehicle(int id) {
+		super();
+		this.id = id;
+	}
 	
 	public Vehicle(int id, String constructor, int numPlace) {
 		super();

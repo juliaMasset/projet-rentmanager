@@ -16,14 +16,23 @@ import com.epf.rentmanager.dao.VehicleDao;
 public class VehicleService {
 
 	private VehicleDao vehicleDao;
-	
-	private VehicleService(VehicleDao vehicleDao){
+
+	private VehicleService(VehicleDao vehicleDao) {
 		this.vehicleDao = vehicleDao;
-		}
-	
+	}
+
 	public long create(Vehicle vehicle) throws ServiceException {
 		try {
 			return this.vehicleDao.create(vehicle);
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public long delete(Vehicle vehicle) throws ServiceException {
+		try {
+			return this.vehicleDao.delete(vehicle);
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
@@ -47,5 +56,5 @@ public class VehicleService {
 		}
 		return null;
 	}
-	
+
 }
