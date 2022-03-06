@@ -40,13 +40,13 @@
                                     <td>${user.firstname}</td>
                                     <td>${user.email}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/details?id=1">
+                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/details?id=${user.id}">
                                         <i class="fa fa-play"></i>
                                         </a>
                                         <a class="btn btn-success" href="#">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a class="btn btn-danger" href="#">
+                                        <a class="btn btn-danger" href="${pageContext.request.contextPath}/users/delete?id=${user.id}">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
@@ -72,3 +72,4 @@
 <%@ include file="/WEB-INF/views/common/js_imports.jsp" %>
 </body>
 </html>
+
