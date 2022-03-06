@@ -55,4 +55,13 @@ public class ClientService {
 		}
 		return null;
 	}
+	
+	public int count() throws ServiceException {
+		try {
+			return this.clientDao.countClient();
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

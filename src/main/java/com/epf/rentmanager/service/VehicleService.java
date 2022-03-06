@@ -56,5 +56,14 @@ public class VehicleService {
 		}
 		return null;
 	}
+	
+	public int count() throws ServiceException {
+		try {
+			return this.vehicleDao.countVehicle();
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 }

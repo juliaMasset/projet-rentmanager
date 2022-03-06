@@ -8,16 +8,46 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+
+import com.epf.rentmanager.exception.ServiceException;
+import com.epf.rentmanager.service.ClientService;
+import com.epf.rentmanager.service.VehicleService;
+
 @WebServlet("/home")
 
 public class HomeServlet extends HttpServlet{
 
+	@Autowired
+	ClientService clientService;
+	
+	@Autowired
+	VehicleService vehicleService;
+	
+	@Override
+	public void init() throws ServletException {
+	super.init();
+	SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+	}
+	
 	private static final String VUE_HOME = "/WEB-INF/views/home.jsp";
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
+
+        try {
+            request.setAttribute("nbVehicles", vehicleService.count());
+            request.setAttribute("nbClients", clientService.count());
+            //request.setAttribute("resas", reservationService.count());
+            
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+
 		getServletContext().getRequestDispatcher(VUE_HOME).forward(request, response);
+		
 			}
 	
 	@Override
