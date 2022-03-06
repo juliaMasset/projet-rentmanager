@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.model.Client;
 import com.epf.rentmanager.service.ClientService;
 
@@ -42,7 +43,18 @@ public class UsersCreateServlet extends HttpServlet {
 
 		Client client = new Client(0, request.getParameter("last_name"), request.getParameter("first_name"),
 				request.getParameter("email"), LocalDate.parse(request.getParameter("birthdate")));
-
-		doGet(request, response);
+		
+		try {
+			
+			clientService.create(client);
+			
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect("/rentmanager/users");  
+		
 	}
 }
+
