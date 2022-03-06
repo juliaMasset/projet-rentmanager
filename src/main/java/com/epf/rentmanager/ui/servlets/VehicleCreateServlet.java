@@ -46,6 +46,15 @@ public class VehicleCreateServlet extends HttpServlet{
 		
 		Vehicle vehicle = new Vehicle(0, request.getParameter("manufacturer"), Integer.parseInt(request.getParameter("numberOfSeats")));
 		
-		doGet(request, response);
+try {
+			
+			vehicleService.create(vehicle);
+			
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect("/rentmanager/cars");  
 	}
 }
