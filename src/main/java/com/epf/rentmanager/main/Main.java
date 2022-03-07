@@ -4,6 +4,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.epf.rentmanager.configuration.AppConfiguration;
+import com.epf.rentmanager.dao.ClientDao;
+import com.epf.rentmanager.exception.DaoException;
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.service.ClientService;
 import com.epf.rentmanager.service.VehicleService;
@@ -15,9 +17,16 @@ public class Main {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfiguration.class);
 		ClientService clientService = context.getBean(ClientService.class);
 		VehicleService vehicleService = context.getBean(VehicleService.class);
+		ClientDao clientDao = context.getBean(ClientDao.class);
 		
 		System.out.println(clientService);
 		System.out.println(vehicleService);
+		try {
+			System.out.println(clientDao.countClient());
+		} catch (DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	

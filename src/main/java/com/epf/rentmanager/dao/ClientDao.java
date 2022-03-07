@@ -30,7 +30,7 @@ public class ClientDao {
 	private static final String DELETE_CLIENT_QUERY = "DELETE FROM Client WHERE id=?;";
 	private static final String FIND_CLIENT_QUERY = "SELECT id, nom, prenom, email, naissance FROM Client WHERE id=?;";
 	private static final String FIND_CLIENTS_QUERY = "SELECT id, nom, prenom, email, naissance FROM Client;";
-	private static final String FIND_CLIENTS_COUNT_QUERY = "SELECT COUNT(id) FROM Client;";
+	private static final String FIND_CLIENTS_COUNT_QUERY = "SELECT COUNT(id) AS count FROM Client;";
 
 	public long create(Client client) throws DaoException {
 		try {
