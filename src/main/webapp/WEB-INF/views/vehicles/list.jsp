@@ -35,19 +35,19 @@
                                 </tr>
                                 <tr>
 
-                                <c:forEach items="${listVehicles}" var="vehicle">
-                                    <td>${vehicle.id}.</td>
-                                    <td>${vehicle.constructor}</td>
-                                    <td>${vehicle.numPlace}</td>
+                                <c:forEach items="${listCars}" var="car">
+                                    <td>${car.id}.</td>
+                                    <td>${car.constructor}</td>
+                                    <td>${car.numPlace}</td>
                                     <!--<td>John Doe</td>-->
                                     <td>
-                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/delete?id=${user.id}">
+                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/delete?id=${car.id}">
                                             <i class="fa fa-play"></i>
                                         </a>
                                         <a class="btn btn-success" href="#">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a class="btn btn-danger" href="${pageContext.request.contextPath}/cars/delete?id=${vehicle.id}">
+                                        <a class="btn btn-danger" href="${pageContext.request.contextPath}/cars/delete?id=${car.id}">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>

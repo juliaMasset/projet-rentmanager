@@ -36,7 +36,7 @@ public class VehicleServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		try {
-			request.setAttribute("listVehicles", this.vehicleService.findAll());
+			request.setAttribute("listCars", this.vehicleService.findAll());
 			System.out.println(vehicleService.findAll());
 			getServletContext().getRequestDispatcher(VUE_CARS).forward(request, response);
 		} catch (ServiceException e) {
