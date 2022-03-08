@@ -3,52 +3,68 @@ package com.epf.rentmanager.model;
 import java.time.LocalDate;
 
 public class Reservation {
-	
-	private int idClient;
-	private int idVehicule;
+
+	private int id;
+	private int clientId;
+	private int vehicleId;
 	private LocalDate dateStart;
 	private LocalDate dateEnd;
-	
-	
-	
-	public int getIdClient() {
-		return idClient;
-	}
-	public void setIdClient(int idClient) {
-		this.idClient = idClient;
-	}
-	public int getIdVehicule() {
-		return idVehicule;
-	}
-	public void setIdVehicule(int idVehicule) {
-		this.idVehicule = idVehicule;
-	}
-	public LocalDate getDateStart() {
-		return dateStart;
-	}
-	public void setDateStart(LocalDate dateStart) {
-		this.dateStart = dateStart;
-	}
-	public LocalDate getDateEnd() {
-		return dateEnd;
-	}
-	public void setDateEnd(LocalDate dateEnd) {
-		this.dateEnd = dateEnd;
-	}
-
 
 	public Reservation() {
 		super();
 	}
-	
-	
-	public Reservation(int idClient, int idVehicule, LocalDate dateStart, LocalDate dateEnd) {
+
+	public Reservation(int id) {
+		this.id = id;
+	}
+
+	public Reservation(int id, int clientId, int vehicleId, LocalDate dateStart, LocalDate dateEnd) {
 		super();
-		this.idClient = idClient;
-		this.idVehicule = idVehicule;
+		this.id = id;
+		this.clientId = clientId;
+		this.vehicleId = vehicleId;
 		this.dateStart = dateStart;
 		this.dateEnd = dateEnd;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getClientId() {
+		return clientId;
+	}
+
+	public void setClientId(int clientId) {
+		this.clientId = clientId;
+	}
+
+	public int getVehicleId() {
+		return vehicleId;
+	}
+
+	public void setVehicleId(int vehiculeId) {
+		this.vehicleId = vehiculeId;
+	}
+
+	public LocalDate getDateStart() {
+		return dateStart;
+	}
+
+	public void setDateStart(LocalDate dateStart) {
+		this.dateStart = dateStart;
+	}
+
+	public LocalDate getDateEnd() {
+		return dateEnd;
+	}
+
+	public void setDateEnd(LocalDate dateEnd) {
+		this.dateEnd = dateEnd;
+	}
 
 }

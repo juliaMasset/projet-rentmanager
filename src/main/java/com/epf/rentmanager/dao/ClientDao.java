@@ -90,8 +90,6 @@ public class ClientDao {
 			throw new DaoException();
 		}
 
-		// return Optional.empty();
-
 	}
 
 	public ArrayList<Client> findAll() throws DaoException {
