@@ -31,6 +31,7 @@ public class ClientDao {
 	private static final String FIND_CLIENT_QUERY = "SELECT id, nom, prenom, email, naissance FROM Client WHERE id=?;";
 	private static final String FIND_CLIENTS_QUERY = "SELECT id, nom, prenom, email, naissance FROM Client;";
 	private static final String FIND_CLIENTS_COUNT_QUERY = "SELECT COUNT(id) AS nbClients FROM Client;";
+	private static final String UPDATE_CLIENT_QUERY = "UPDATE Client SET nom = ?, prenom = ?, email = ?, naissance = ? WHERE id = ?;";
 
 	public long create(Client client) throws DaoException {
 		try {
@@ -54,6 +55,23 @@ public class ClientDao {
 			Connection conn = ConnectionManager.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(DELETE_CLIENT_QUERY, Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, client.getId());
+			long key = stmt.executeUpdate();
+			conn.close();
+			return key;
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
+	}
+	
+	public long update(Client client) throws DaoException {
+		try {
+			Connection conn = ConnectionManager.getConnection();
+			PreparedStatement stmt = conn.prepareStatement(UPDATE_CLIENT_QUERY, Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, client.getFirstname());
+			stmt.setString(2, client.getLastname());
+			stmt.setString(3, client.getEmail());
+			stmt.setDate(4, Date.valueOf(client.getBirthdate()));
+			stmt.setInt(5, client.getId());
 			long key = stmt.executeUpdate();
 			conn.close();
 			return key;
