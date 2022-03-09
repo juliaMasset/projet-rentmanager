@@ -36,10 +36,10 @@
                                 </tr>
                                 <c:forEach items="${listRents}" var="rent">
                                     <tr>
-                                        <td>${rent.id}</td>
+                                        <td>${rent.id}.</td>
                                         <c:forEach items="${listCars}" var="car">
                                             <c:if test="${rent.vehicleId eq car.id}">
-                                                <td>${car.constructor}</td>
+                                                <td>${car.constructor} / ${car.numPlace} places</td>
                                             </c:if>
                                         </c:forEach>
                                         <c:forEach items="${listUsers}" var="user">
