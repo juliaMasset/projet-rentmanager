@@ -20,22 +20,22 @@ import com.epf.rentmanager.persistence.ConnectionManager;
 @Repository
 
 public class VehicleDao {
-	
-	private VehicleDao() {}
-	
+
+	private VehicleDao() {
+	}
+
 	private static final String CREATE_VEHICLE_QUERY = "INSERT INTO Vehicle(constructeur, nb_places) VALUES(?, ?);";
 	private static final String DELETE_VEHICLE_QUERY = "DELETE FROM Vehicle WHERE id=?;";
 	private static final String FIND_VEHICLE_QUERY = "SELECT id, constructeur, nb_places FROM Vehicle WHERE id=?;";
 	private static final String FIND_VEHICLES_QUERY = "SELECT id, constructeur, nb_places FROM Vehicle;";
 	private static final String FIND_VEHICLES_COUNT_QUERY = "SELECT COUNT(id) AS nbVehicles FROM Vehicle;";
 	private static final String UPDATE_VEHICLE_QUERY = "UPDATE Vehicle SET constructeur = ?, nb_places = ? WHERE id = ?;";
-	
+
 	public long create(Vehicle vehicle) throws DaoException {
 		try {
 
 			Connection conn = ConnectionManager.getConnection();
-			PreparedStatement stmt = conn.prepareStatement(CREATE_VEHICLE_QUERY,
-					Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = conn.prepareStatement(CREATE_VEHICLE_QUERY, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, vehicle.getConstructor());
 			stmt.setInt(2, vehicle.getNumPlace());
 			long key = ((PreparedStatement) stmt).executeUpdate();
@@ -49,8 +49,7 @@ public class VehicleDao {
 	public long delete(Vehicle vehicle) throws DaoException {
 		try {
 			Connection conn = ConnectionManager.getConnection();
-			PreparedStatement stmt = conn.prepareStatement(DELETE_VEHICLE_QUERY,
-					Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = conn.prepareStatement(DELETE_VEHICLE_QUERY, Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, vehicle.getId());
 			long key = ((PreparedStatement) stmt).executeUpdate();
 			return key;
@@ -73,19 +72,19 @@ public class VehicleDao {
 			throw new DaoException();
 		}
 	}
-	
+
 	public Optional<Vehicle> findById(int id) throws DaoException {
-		try  {
+		try {
 			Connection conn = ConnectionManager.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(FIND_VEHICLE_QUERY);
 			stmt.setLong(1, id);
 			ResultSet rs = ((PreparedStatement) stmt).executeQuery();
-			conn.close();
 			while (rs.next()) {
-				Vehicle vehicule = new Vehicle(rs.getInt("id"), rs.getString("constructeur"), rs.getInt("nb_place"));
-				System.out.println(vehicule);
+				Vehicle vehicule = new Vehicle(rs.getInt("id"), rs.getString("constructeur"), rs.getInt("nb_places"));
+				conn.close();
 				return Optional.of(vehicule);
 			}
+
 		} catch (SQLException e) {
 			throw new DaoException();
 		}
@@ -102,16 +101,16 @@ public class VehicleDao {
 				Vehicle vehicle = new Vehicle(rs.getInt("id"), rs.getString("constructeur"), rs.getInt("nb_places"));
 				vehiculeResultList.add(vehicle);
 			}
-			
+
 			conn.close();
 			return vehiculeResultList;
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DaoException();
 		}
 	}
-	
+
 	public int countVehicle() throws DaoException {
 		try {
 			Connection conn = ConnectionManager.getConnection();

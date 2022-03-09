@@ -19,14 +19,13 @@ public class Main {
 		VehicleService vehicleService = context.getBean(VehicleService.class);
 		ClientDao clientDao = context.getBean(ClientDao.class);
 		
-		System.out.println(clientService);
-		System.out.println(vehicleService);
 		try {
-			System.out.println(clientDao.countClients());
-		} catch (DaoException e) {
+			System.out.println(vehicleService.findById(4));
+		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 	}
 	

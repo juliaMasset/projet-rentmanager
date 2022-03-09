@@ -20,7 +20,7 @@ import com.epf.rentmanager.service.VehicleService;
 @WebServlet("/cars/update")
 
 public class VehicleUpdateServlet extends HttpServlet {
-	
+
 	@Autowired
 	VehicleService vehicleService;
 
@@ -35,15 +35,12 @@ public class VehicleUpdateServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		try {
-			
-            int id = Integer.parseInt(request.getParameter("id"));
-            Optional<Vehicle> vehicle = vehicleService.findById(id);
-            
-            request.setAttribute("user", vehicle.get());
-            
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        }
+
+			request.setAttribute("car", vehicleService.findById(Integer.parseInt(request.getParameter("id"))).get());
+
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
 
 		getServletContext().getRequestDispatcher("/WEB-INF/views/vehicles/update.jsp").forward(request, response);
 
@@ -52,19 +49,20 @@ public class VehicleUpdateServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		Vehicle vehicle = new Vehicle(Integer.parseInt(request.getParameter("id")), request.getParameter("manufacturer"), Integer.parseInt(request.getParameter("numberOfSeats")));
-		
-try {
-			
-			vehicleService.create(vehicle);
-			
+
+		Vehicle vehicle = new Vehicle(Integer.parseInt(request.getParameter("id")),
+				request.getParameter("manufacturer"), Integer.parseInt(request.getParameter("numberOfSeats")));
+
+		try {
+
+			vehicleService.update(vehicle);
+
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		response.sendRedirect("/rentmanager/cars");  
+
+		response.sendRedirect("/rentmanager/cars");
 	}
 
 }

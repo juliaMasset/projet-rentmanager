@@ -3,6 +3,7 @@
 /Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/ui/servlets/ReservationCreateServlet.java
 /Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/model/Client.java
 /Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/ui/servlets/UsersCreateServlet.java
+/Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/ui/servlets/VehicleUpdateServlet.java
 /Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/dao/VehicleDao.java
 /Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/model/Vehicle.java
 /Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/service/VehicleService.java
