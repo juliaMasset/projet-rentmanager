@@ -41,10 +41,10 @@
                                     <td>${car.numPlace}</td>
                                     <!--<td>John Doe</td>-->
                                     <td>
-                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/delete?id=${car.id}">
+                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/details?id=${car.id}">
                                             <i class="fa fa-play"></i>
                                         </a>
-                                        <a class="btn btn-success" href="#">
+                                        <a class="btn btn-success" href="${pageContext.request.contextPath}/cars/update?id=${car.id}">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a class="btn btn-danger" href="${pageContext.request.contextPath}/cars/delete?id=${car.id}">
