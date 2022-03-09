@@ -22,7 +22,7 @@ public class Main {
 		System.out.println(clientService);
 		System.out.println(vehicleService);
 		try {
-			System.out.println(clientDao.countClient());
+			System.out.println(clientDao.countClients());
 		} catch (DaoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

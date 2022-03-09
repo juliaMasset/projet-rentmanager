@@ -58,7 +58,7 @@ public class ClientService {
 	
 	public int count() throws ServiceException {
 		try {
-			return this.clientDao.countClient();
+			return this.clientDao.countClients();
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}

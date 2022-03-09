@@ -38,17 +38,17 @@
                                     <tr>
                                         <td>${rent.id}</td>
                                         <c:forEach items="${listCars}" var="car">
-                                            <c:if test="${rent.vehicle_id eq car.id}">
-                                                <td>${car.constructeur}</td>
+                                            <c:if test="${rent.vehicleId eq car.id}">
+                                                <td>${car.constructor}</td>
                                             </c:if>
                                         </c:forEach>
                                         <c:forEach items="${listUsers}" var="user">
-                                            <c:if test="${rent.client_id eq user.id}">
-                                                <td>${user.prenom} ${user.nom}</td>
+                                            <c:if test="${rent.clientId eq user.id}">
+                                                <td>${user.firstname} ${user.lastname}</td>
                                             </c:if>
                                         </c:forEach>
-                                        <td>${rent.debut}</td>
-                                        <td>${rent.fin}</td>
+                                        <td>${rent.dateStart}</td>
+                                        <td>${rent.dateEnd}</td>
                                         <td>
                                         <a class="btn btn-primary" href="${pageContext.request.contextPath}/cars?id=${rent.id}">
                                             <i class="fa fa-play"></i>
