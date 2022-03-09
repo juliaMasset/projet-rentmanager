@@ -32,10 +32,14 @@ public class ReservationDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		Reservation reservation = new Reservation(Integer.parseInt(request.getParameter("id")));
+
 		try {
-			Reservation reservation = new Reservation(Integer.parseInt(request.getParameter("id")));
+
 			reservationService.delete(reservation);
+
 		} catch (ServiceException e) {
+
 			e.printStackTrace();
 		}
 

@@ -52,14 +52,13 @@ public class ReservationDao {
 		try {
 			Connection conn = ConnectionManager.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(DELETE_RESERVATION_QUERY, Statement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, reservation.getClientId());
+			stmt.setInt(1, reservation.getId());
 			long key = ((PreparedStatement) stmt).executeUpdate();
 			conn.close();
 			return key;
 		} catch (SQLException e) {
 			throw new DaoException();
 		}
-
 	}
 
 	public ArrayList<Reservation> findResaByClientId(int clientId) throws DaoException {
@@ -87,7 +86,7 @@ public class ReservationDao {
 	public ArrayList<Reservation> findResaByVehicleId(int vehicleId) throws DaoException {
 
 		try {
-			
+
 			Connection conn = ConnectionManager.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(FIND_RESERVATIONS_BY_VEHICLE_QUERY);
 			stmt.setLong(1, vehicleId);
@@ -99,7 +98,7 @@ public class ReservationDao {
 						rs.getDate("debut").toLocalDate(), rs.getDate("fin").toLocalDate());
 				resaList.add(resa);
 			}
-			
+
 			conn.close();
 			return resaList;
 
