@@ -50,13 +50,13 @@
                                         <td>${rent.dateStart}</td>
                                         <td>${rent.dateEnd}</td>
                                         <td>
-                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/cars?id=${rent.id}">
+                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/rents/details?id=${rent.id}">
                                             <i class="fa fa-play"></i>
                                         </a>
                                         <a class="btn btn-success" href="#">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a class="btn btn-danger" href="#">
+                                        <a class="btn btn-danger" href="${pageContext.request.contextPath}/rents/delete?id=${rent.id}">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>

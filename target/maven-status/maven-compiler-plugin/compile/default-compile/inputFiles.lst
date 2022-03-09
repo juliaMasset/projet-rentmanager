@@ -15,6 +15,7 @@
 /Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/main/Main.java
 /Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/dao/ClientDao.java
 /Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/persistence/FillDatabase.java
+/Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/ui/servlets/ReservationDeleteServlet.java
 /Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/persistence/ConnectionManager.java
 /Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/configuration/AppConfiguration.java
 /Users/jmt/Documents/EPF/4A/projet-rentmanager/src/main/java/com/epf/rentmanager/exception/DaoException.java
