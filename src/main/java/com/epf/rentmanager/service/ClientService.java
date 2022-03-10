@@ -65,6 +65,15 @@ public class ClientService {
 		return 0;
 	}
 	
+	public int ageClient(int id) throws ServiceException {
+		try {
+			return this.clientDao.ageClients(id);
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 	public long update(Client client) throws ServiceException {
 		try {
 			return this.clientDao.update(client);

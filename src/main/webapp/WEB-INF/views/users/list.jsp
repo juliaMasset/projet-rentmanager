@@ -30,6 +30,7 @@
                                     <th style="width: 10px">#</th>
                                     <th>Nom</th>
                                     <th>Prenom</th>
+                                    <th>Date de naissance</th>
                                     <th>Email</th>
                                     <th>Action</th>
                                 </tr>
@@ -38,6 +39,7 @@
                                     <td> ${user.id}.</td>
                                     <td>${user.lastname}</td>
                                     <td>${user.firstname}</td>
+                                    <td>${user.birthdate}</td>
                                     <td>${user.email}</td>
                                     <td>
                                         <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/details?id=${user.id}">

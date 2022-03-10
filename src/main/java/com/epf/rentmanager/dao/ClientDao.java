@@ -32,7 +32,10 @@ public class ClientDao {
 	private static final String FIND_CLIENTS_QUERY = "SELECT id, nom, prenom, email, naissance FROM Client;";
 	private static final String FIND_CLIENTS_COUNT_QUERY = "SELECT COUNT(id) AS nbClients FROM Client;";
 	private static final String UPDATE_CLIENT_QUERY = "UPDATE Client SET nom = ?, prenom = ?, email = ?, naissance = ? WHERE id = ?;";
+	private static final String FIND_AGE_CLIENT_QUERY = "SELECT YEAR(NOW())-YEAR(naissance) AS age FROM Client;";
 
+
+	
 	public long create(Client client) throws DaoException {
 		try {
 			Connection conn = ConnectionManager.getConnection();
@@ -140,6 +143,23 @@ public class ClientDao {
 			rs.next();
 			int count = rs.getInt("nbClients");
 			return count;
+
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
+	}
+	
+	public int ageClients(int id) throws DaoException {
+		try {
+			Connection conn = ConnectionManager.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(FIND_AGE_CLIENT_QUERY);
+			pstmt.setInt(1, id);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			rs.next();
+			int age = rs.getInt("age");
+			return age;
 
 		} catch (SQLException e) {
 			throw new DaoException();

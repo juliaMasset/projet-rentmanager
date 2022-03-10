@@ -20,7 +20,7 @@ public class Main {
 		ClientDao clientDao = context.getBean(ClientDao.class);
 		
 		try {
-			System.out.println(vehicleService.findById(4));
+			System.out.println(clientService.ageClient(1));
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

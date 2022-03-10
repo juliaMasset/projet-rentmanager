@@ -31,28 +31,28 @@
                                     <label for="last_name" class="col-sm-2 control-label">Nom</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Nom">
+                                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Nom" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="first_name" class="col-sm-2 control-label">Prenom</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Prenom">
+                                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Prenom" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="col-sm-2 control-label">Email</label>
 
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="birthdate" class="col-sm-2 control-label">Date de naissance</label>
 
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="Date de naissance">
+                                        <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="Date de naissance" required onchange="verifyAge()">
                                     </div>
                                 </div>
                             </div>
@@ -76,6 +76,19 @@
 <!-- ./wrapper -->
 
 <%@ include file="/WEB-INF/views/common/js_imports.jsp" %>
+<script>
+    function verifyAge(){
+        var Bdate = document.getElementById('birthdate').value;
+        var Bday = +new Date(Bdate);
+        if(((Date.now() - Bday) / (31557600000)) > 18){
+            console.log('ok');
+            document.getElementById('addbtn').disabled = false;
+        } else{
+            console.log('nok');
+            document.getElementById('addbtn').disabled = true;
+        }
+    } 
+</script>
 </body>
 </html>
 
