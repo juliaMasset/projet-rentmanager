@@ -21,13 +21,19 @@
                     <div class="box box-primary">
                         <div class="box-body box-profile">
                             <h3 class="profile-username text-center">${user.firstname} ${user.lastname}</h3> 
-                            <h3 class="profile-username text-center">(${user.birthdate})</h3>
+
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b>Reservation(s)</b> <a class="pull-right">${fn:length(reservations)}</a>
+                                    <b>Date de naissance: </b> <a class="pull-right">${user.birthdate} </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Voiture(s)</b> <a class="pull-right">${fn:length(vehicles)}</a>
+                                    <b>Email: </b> <a class="pull-right">${user.email} </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Reservation(s): </b> <a class="pull-right">${fn:length(reservations)}</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Voiture(s): </b> <a class="pull-right">${fn:length(vehicles)}</a>
                                 </li>
                             </ul>
                         </div>
