@@ -43,7 +43,8 @@ public class VehicleDetailsServlet extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			request.setAttribute("car", vehicleService.findById(id).get());
 			request.setAttribute("listResa", reservationService.findResaByVehicleId(id));
-			request.setAttribute("users", clientService.findAll());
+			request.setAttribute("users", clientService.findClientByVehicleId(id));
+			request.setAttribute("listUsers", clientService.findAll());
 
 		} catch (NumberFormatException | ServiceException e) {
 			e.printStackTrace();

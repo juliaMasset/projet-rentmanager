@@ -56,7 +56,7 @@
                                         <c:forEach items="${listResa}" var="resa">
                                             <tr>
                                                 <td>${resa.id}.</td>
-                                                <c:forEach items="${users}" var="user">
+                                                <c:forEach items="${listUsers}" var="user">
                                                     <c:if test="${resa.clientId eq user.id}">
                                                         <td>${user.firstname} ${user.lastname}</td>
                                                         <td>${user.email}</td>

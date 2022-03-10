@@ -25,7 +25,6 @@ public class ClientDao {
 	private ClientDao() {
 	}
 
-
 	private static final String CREATE_CLIENT_QUERY = "INSERT INTO Client(nom, prenom, email, naissance) VALUES(?, ?, ?, ?);";
 	private static final String DELETE_CLIENT_QUERY = "DELETE FROM Client WHERE id=?;";
 	private static final String FIND_CLIENT_QUERY = "SELECT id, nom, prenom, email, naissance FROM Client WHERE id=?;";
@@ -33,14 +32,12 @@ public class ClientDao {
 	private static final String FIND_CLIENTS_COUNT_QUERY = "SELECT COUNT(id) AS nbClients FROM Client;";
 	private static final String UPDATE_CLIENT_QUERY = "UPDATE Client SET nom = ?, prenom = ?, email = ?, naissance = ? WHERE id = ?;";
 	private static final String FIND_AGE_CLIENT_QUERY = "SELECT YEAR(NOW())-YEAR(naissance) AS age FROM Client;";
+	private static final String FIND_RESERVATIONS_CLIENT_BY_VEHICLE_QUERY = "SELECT * FROM Reservation INNER JOIN Client ON Reservation.client_id = Client.id WHERE vehicle_id=?;";
 
-
-	
 	public long create(Client client) throws DaoException {
 		try {
 			Connection conn = ConnectionManager.getConnection();
-			PreparedStatement stmt = conn.prepareStatement(CREATE_CLIENT_QUERY,
-					Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = conn.prepareStatement(CREATE_CLIENT_QUERY, Statement.RETURN_GENERATED_KEYS);
 			(stmt).setString(1, client.getLastname());
 			(stmt).setString(2, client.getFirstname());
 			(stmt).setString(3, client.getEmail());
@@ -65,7 +62,7 @@ public class ClientDao {
 			throw new DaoException();
 		}
 	}
-	
+
 	public long update(Client client) throws DaoException {
 		try {
 			Connection conn = ConnectionManager.getConnection();
@@ -122,19 +119,19 @@ public class ClientDao {
 			while (rs.next()) {
 				Client client = new Client(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),
 						rs.getString("email"), rs.getDate("naissance").toLocalDate());
-						System.out.println(client);
+				System.out.println(client);
 				clientResultList.add(client);
 			}
-			
+
 			conn.close();
 			return clientResultList;
-			
+
 		} catch (SQLException e) {
 			throw new DaoException();
 		}
-		
+
 	}
-	
+
 	public int countClients() throws DaoException {
 		try {
 			Connection conn = ConnectionManager.getConnection();
@@ -148,7 +145,7 @@ public class ClientDao {
 			throw new DaoException();
 		}
 	}
-	
+
 	public int ageClients(int id) throws DaoException {
 		try {
 			Connection conn = ConnectionManager.getConnection();
@@ -160,6 +157,27 @@ public class ClientDao {
 			rs.next();
 			int age = rs.getInt("age");
 			return age;
+
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
+	}
+
+	public ArrayList<Client> findClientByVehicleId(int vehicleId) throws DaoException {
+		try {
+			Connection conn = ConnectionManager.getConnection();
+			PreparedStatement stmt = conn.prepareStatement(FIND_RESERVATIONS_CLIENT_BY_VEHICLE_QUERY);
+			stmt.setLong(1, vehicleId);
+			ResultSet rs = stmt.executeQuery();
+			ArrayList<Client> clientList = new ArrayList<Client>();
+			while (rs.next()) {
+				Client client = new Client(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),
+						rs.getString("email"), rs.getDate("naissance").toLocalDate());
+
+				clientList.add(client);
+			}
+			conn.close();
+			return clientList;
 
 		} catch (SQLException e) {
 			throw new DaoException();

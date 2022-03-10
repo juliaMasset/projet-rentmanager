@@ -82,4 +82,13 @@ public class ClientService {
 		}
 		return 0;
 	}
+	
+	public ArrayList<Client> findClientByVehicleId(int vehicleId) throws ServiceException {
+		try {
+			return this.clientDao.findClientByVehicleId(vehicleId);
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
