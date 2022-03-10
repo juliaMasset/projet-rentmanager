@@ -27,7 +27,7 @@
                                     <b>Date de naissance: </b> <a class="pull-right">${user.birthdate} </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Email: </b> <a class="pull-right">${user.email} </a>
+                                    <b>Mail:</b> <a class="pull-right">${user.email} </a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>Reservation(s): </b> <a class="pull-right">${fn:length(listResa)}</a>
