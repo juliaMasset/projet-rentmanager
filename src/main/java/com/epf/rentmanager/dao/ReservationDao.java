@@ -71,11 +71,8 @@ public class ReservationDao {
 
 			ArrayList<Reservation> resaList = new ArrayList<Reservation>();
 			while (rs.next()) {
-				Reservation resa = new Reservation(rs.getInt("id"),
-						(int) (clientId),
-						rs.getInt("vehicle_id"),
-						rs.getDate("debut").toLocalDate(),
-						rs.getDate("fin").toLocalDate());
+				Reservation resa = new Reservation(rs.getInt("id"), (int) (clientId), rs.getInt("vehicle_id"),
+						rs.getDate("debut").toLocalDate(), rs.getDate("fin").toLocalDate());
 				resaList.add(resa);
 			}
 			conn.close();
@@ -88,7 +85,6 @@ public class ReservationDao {
 	public ArrayList<Reservation> findResaByVehicleId(int vehicleId) throws DaoException {
 
 		try {
-
 			Connection conn = ConnectionManager.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(FIND_RESERVATIONS_BY_VEHICLE_QUERY);
 			stmt.setLong(1, vehicleId);
@@ -96,14 +92,12 @@ public class ReservationDao {
 
 			ArrayList<Reservation> resaList = new ArrayList<Reservation>();
 			while (rs.next()) {
-				Reservation resa = new Reservation(rs.getInt("id"), rs.getInt("client_id"), rs.getInt("vehicle_id"),
+				Reservation resa = new Reservation(rs.getInt("id"), rs.getInt("client_id"), (int) (vehicleId), 
 						rs.getDate("debut").toLocalDate(), rs.getDate("fin").toLocalDate());
 				resaList.add(resa);
 			}
-
 			conn.close();
 			return resaList;
-
 		} catch (SQLException e) {
 			throw new DaoException();
 		}
