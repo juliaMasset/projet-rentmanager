@@ -38,7 +38,7 @@
                                         class="col-sm-2 control-label">Nom</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="last_name"
-                                            name="last_name" placeholder="Nom" value="${user.lastname}">
+                                            name="last_name" placeholder="Nom" value="${user.lastname}" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -47,7 +47,7 @@
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="first_name"
                                             name="first_name" placeholder="Prenom"
-                                            value="${user.firstname}">
+                                            value="${user.firstname}" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -55,7 +55,7 @@
 
                                     <div class="col-sm-10">
                                         <input type="email" class="form-control" id="email"
-                                            name="email" placeholder="Email" value="${user.email}">
+                                            name="email" placeholder="Email" value="${user.email}" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -65,7 +65,7 @@
                                     <div class="col-sm-10">
                                         <input type="date" class="form-control" id="birthdate"
                                             name="birthdate" placeholder="Naissance"
-                                            value="${user.birthdate}">
+                                            value="${user.birthdate}" required>
                                     </div>
                                 </div>
                             </div>
