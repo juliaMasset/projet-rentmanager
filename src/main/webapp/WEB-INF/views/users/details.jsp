@@ -30,7 +30,7 @@
                                     <b>Email: </b> <a class="pull-right">${user.email} </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Reservation(s): </b> <a class="pull-right">${fn:length(reservations)}</a>
+                                    <b>Reservation(s): </b> <a class="pull-right">${fn:length(listResa)}</a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>Voiture(s): </b> <a class="pull-right">${fn:length(vehicles)}</a>
@@ -67,10 +67,10 @@
                                                     </c:if>
                                                 </c:forEach>
                                                 <td>
-                                                    <fmt:parseDate value="${resa.debut}" pattern="yyyy-MM-dd" var="parsedDateTime" type="both" />
+                                                    <fmt:parseDate value="${resa.dateStart}" pattern="yyyy-MM-dd" var="parsedDateTime" type="both" />
                                                     <fmt:formatDate pattern="dd/MM/yyyy" value="${ parsedDateTime }" />
                                                 </td>
-                                                <td> <fmt:parseDate value="${resa.fin}" pattern="yyyy-MM-dd" var="parsedDateTime" type="both" />
+                                                <td> <fmt:parseDate value="${resa.dateEnd}" pattern="yyyy-MM-dd" var="parsedDateTime" type="both" />
                                                     <fmt:formatDate pattern="dd/MM/yyyy" value="${ parsedDateTime }" /></td>
                                                 <td>
                                             </tr>

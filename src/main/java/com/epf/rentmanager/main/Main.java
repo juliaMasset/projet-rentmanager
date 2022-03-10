@@ -8,6 +8,7 @@ import com.epf.rentmanager.dao.ClientDao;
 import com.epf.rentmanager.exception.DaoException;
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.service.ClientService;
+import com.epf.rentmanager.service.ReservationService;
 import com.epf.rentmanager.service.VehicleService;
 
 public class Main {
@@ -17,10 +18,11 @@ public class Main {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfiguration.class);
 		ClientService clientService = context.getBean(ClientService.class);
 		VehicleService vehicleService = context.getBean(VehicleService.class);
+		ReservationService reservationService = context.getBean(ReservationService.class);
 		ClientDao clientDao = context.getBean(ClientDao.class);
 		
 		try {
-			System.out.println(clientService.ageClient(1));
+			reservationService.findResaByClientId(1);
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
