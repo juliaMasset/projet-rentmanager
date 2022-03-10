@@ -31,14 +31,14 @@
                                     <label for="last_name" class="col-sm-2 control-label">Nom</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Nom" required>
+                                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Nom" minlength="2" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="first_name" class="col-sm-2 control-label">Prenom</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Prenom" required>
+                                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Prenom" minlength="2" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -55,10 +55,13 @@
                                         <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="Date de naissance" required onchange="verifyAge()">
                                     </div>
                                 </div>
+                                <div class="alert alert-danger" role="alert" id="expirationWarning">
+                                    Il faut avoir plus de 18 ans ! 
+                                </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right">Ajouter</button>
+                                <button type="submit" class="btn btn-info pull-right" id="add">Ajouter</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
@@ -82,10 +85,12 @@
         var Bday = +new Date(Bdate);
         if(((Date.now() - Bday) / (31557600000)) > 18){
             console.log('ok');
-            document.getElementById('addbtn').disabled = false;
+            document.getElementById('add').disabled = false;
+            document.getElementById('expirationWarning').hidden = true;
         } else{
             console.log('nok');
-            document.getElementById('addbtn').disabled = true;
+            document.getElementById('add').disabled = true;
+            document.getElementById('expirationWarning').hidden = false;
         }
     } 
 </script>
