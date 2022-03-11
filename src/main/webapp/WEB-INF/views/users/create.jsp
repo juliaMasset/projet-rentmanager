@@ -48,6 +48,9 @@
                                         <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                                     </div>
                                 </div>
+                                <div class="alert alert-danger" role="alert" id="expirationWarning2">
+                                    Email deja pris ! 
+                                </div>
                                 <div class="form-group">
                                     <label for="birthdate" class="col-sm-2 control-label">Date de naissance</label>
 
@@ -102,15 +105,17 @@ document.getElementById('expirationWarning').hidden = true;
                                 '${user.email}',                  
                             </c:forEach>                   
                             ];
-                            
+    document.getElementById('expirationWarning2').hidden = true;
+
     $('#email').on('change',()=>{
         let result = clientsMailsList.find((element)=> element==$('#email').val());
         console.log(result)
         if(result===undefined){
-            document.getElementById('addbtn').disabled = false;
+            document.getElementById('add').disabled = false;
+            document.getElementById('expirationWarning2').hidden = true;
         } else { //une adresse mail existe
-            document.getElementById('addbtn').disabled = true;
-            alert('Cette adresse mail existe deja ...');
+            document.getElementById('add').disabled = true;
+            document.getElementById('expirationWarning2').hidden = false;
         }
     });
 
