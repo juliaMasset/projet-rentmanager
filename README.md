@@ -14,7 +14,8 @@
 - Lors de la création d’un Client, plusieurs champs sont obligatoires : nom, prénom, email et date de naissance
 - validation des informations, en particulier le format des dates, la syntaxe de l’email, l'âge du client devant être supérieur à 18 ans, la taille du nom et prénom ainsi que le nombre de places
 - affichage d'une alerte si date de naissance invalide
-- nombre de places minimum 2 et maximum 7
+- nombre de places minimum 2 et maximum 9
+- Alerte si réservation est supérieure à 7 jours
 - Lister toutes les Réservations associées à un Client donné
 - Lister toutes les Réservations associées à un Véhicule donné
 - Si un client ou un véhicule est supprimé, alors les réservations associées sont supprimées
