@@ -16,6 +16,8 @@
 - affichage d'une alerte si date de naissance invalide (hidden abled quand l'âge est juste et disabled quand il ne l'est pas)
 - nombre de places minimum 2 et maximum 9 (min="2" max="9" en HTML)
 - Alerte si réservation est supérieure à 7 jours (fonction javascript)
+- Un client ayant une adresse mail déjà prise ne peut pas être créé (fonction javascript)
+- Alerte si adresse mail déjà utilisée
 - Lister toutes les Réservations associées à un Client donné (méthodes dans le DAO)
 - Lister toutes les Réservations associées à un Véhicule donné (méthodes dans le DAO)
 - Si un client ou un véhicule est supprimé, alors les réservations associées sont supprimées (dans fill database, ajout de ONDELETE CASCADE)
@@ -24,6 +26,5 @@
 
 - Une voiture ne peux pas être réservée 2 fois le même jour
 - Une voiture ne peux pas être réservée 30 jours de suite sans pause
-- Un client ayant une adresse mail déjà prise ne peut pas être créé
 
 
