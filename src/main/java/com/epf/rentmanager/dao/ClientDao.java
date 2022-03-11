@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import com.epf.rentmanager.exception.DaoException;
 import com.epf.rentmanager.model.Client;
+import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.persistence.ConnectionManager;
 
@@ -49,17 +50,23 @@ public class ClientDao {
 		}
 	}
 
-	public long delete(Client client) throws DaoException {
+	public int delete(Client client) throws DaoException {
+
 		try {
 			Connection conn = ConnectionManager.getConnection();
-			PreparedStatement stmt = conn.prepareStatement(DELETE_CLIENT_QUERY, Statement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1, client.getId());
-			long key = stmt.executeUpdate();
+			PreparedStatement pstmt = conn.prepareStatement(DELETE_CLIENT_QUERY,
+					PreparedStatement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, client.getId());
+			int key = pstmt.executeUpdate();
 			conn.close();
+			if (conn.isClosed())
+				System.out.println("Connection closed.");
 			return key;
 		} catch (SQLException e) {
-			throw new DaoException();
+			e.printStackTrace();
 		}
+
+		return 0;
 	}
 
 	public long update(Client client) throws DaoException {
@@ -166,23 +173,4 @@ public class ClientDao {
 		}
 	}
 
-	public ArrayList<String> findEmails() throws DaoException {
-		try {
-			Connection conn = ConnectionManager.getConnection();
-			PreparedStatement stmt = conn.prepareStatement(FIND_CLIENTS_QUERY);
-			ResultSet rs = stmt.executeQuery();
-			ArrayList<String> emailList = new ArrayList<String>();
-			
-			while (rs.next()) {
-				emailList.add(rs.getString("email"));
-			}
-
-			conn.close();
-			return emailList;
-
-		} catch (SQLException e) {
-			throw new DaoException();
-		}
-
-	}
 }

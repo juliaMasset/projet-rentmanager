@@ -17,11 +17,6 @@ public class Client {
 		this.id = id;
 	}
 	
-	public Client(String email) {
-		super();
-		this.email = email;
-	}
-	
 	public Client(int id, String firstname, String lastname, String email, LocalDate birthdate) {
 		super();
 		this.id = id;

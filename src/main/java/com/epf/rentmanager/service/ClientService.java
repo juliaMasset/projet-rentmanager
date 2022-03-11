@@ -29,7 +29,7 @@ public class ClientService {
 		return 0;
 	}
 
-	public long delete(Client client) throws ServiceException {
+	public int delete(Client client) throws ServiceException {
 		try {
 			return this.clientDao.delete(client);
 		} catch (DaoException e) {
@@ -56,14 +56,6 @@ public class ClientService {
 		return null;
 	}
 	
-	public ArrayList<String> findEmails() throws ServiceException {
-		try {
-			return this.clientDao.findEmails();
-		} catch (DaoException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 	
 	public int count() throws ServiceException {
 		try {
