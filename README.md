@@ -19,6 +19,11 @@
 - Lister toutes les Réservations associées à un Client donné
 - Lister toutes les Réservations associées à un Véhicule donné
 - Si un client ou un véhicule est supprimé, alors les réservations associées sont supprimées
-- 
+
+# Contraintes non réussies
+
+- Une voiture ne peux pas être réservée 2 fois le même jour
+- Une voiture ne peux pas être réservée 30 jours de suite sans pause
+- Un client ayant une adresse mail déjà prise ne peut pas être créé
 
 
