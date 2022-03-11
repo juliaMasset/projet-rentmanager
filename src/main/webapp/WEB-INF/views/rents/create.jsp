@@ -62,10 +62,13 @@
                                         <input type="date" class="form-control" id="end" name="end" required>
                                     </div>
                                 </div>
+                                <div class="alert alert-danger" role="alert" id="expirationWarning">
+                                    7 jours maximum ! 
+                                </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right" id="addBtn">Ajouter</button>
+                                <button type="submit" class="btn btn-info pull-right" id="add">Ajouter</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
@@ -90,7 +93,43 @@
     $(function () {
         $('[data-mask]').inputmask()
     });
-    
+
+    document.getElementById('expirationWarning').hidden = true;
+
+    $('#begin').on('change',()=>{
+        if ($('#end').val()){
+            var date1 = new Date($('#end').val());
+            var date2 = new Date($('#begin').val());
+            var diffTime = Math.abs(date2 - date1);
+            var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            if(diffDays>7){
+                document.getElementById('add').disabled = true;
+                document.getElementById('expirationWarning').hidden = false;
+
+        } else{
+                document.getElementById('add').disabled = false;
+                document.getElementById('expirationWarning').hidden = true;
+
+        }
+        }
+    });
+
+   $('#end').on('change',()=>{
+        if ($('#begin').val()){
+            var date1 = new Date($('#end').val());
+            var date2 = new Date($('#begin').val());
+            var diffTime = Math.abs(date2 - date1);
+            var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            if(diffDays>7){
+                document.getElementById('add').disabled = true;
+                document.getElementById('expirationWarning').hidden = false;
+
+            } else {
+                document.getElementById('add').disabled = false;
+                document.getElementById('expirationWarning').hidden = true;
+            }
+        }
+    });
 </script>
 </body>
 </html>

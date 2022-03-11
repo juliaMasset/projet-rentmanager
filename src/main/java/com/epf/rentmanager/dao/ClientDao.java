@@ -31,7 +31,6 @@ public class ClientDao {
 	private static final String FIND_CLIENTS_QUERY = "SELECT id, nom, prenom, email, naissance FROM Client;";
 	private static final String FIND_CLIENTS_COUNT_QUERY = "SELECT COUNT(id) AS nbClients FROM Client;";
 	private static final String UPDATE_CLIENT_QUERY = "UPDATE Client SET nom = ?, prenom = ?, email = ?, naissance = ? WHERE id = ?;";
-	private static final String FIND_AGE_CLIENT_QUERY = "SELECT YEAR(NOW())-YEAR(naissance) AS age FROM Client;";
 	private static final String FIND_RESERVATIONS_CLIENT_BY_VEHICLE_QUERY = "SELECT * FROM Reservation INNER JOIN Client ON Reservation.client_id = Client.id WHERE vehicle_id=?;";
 
 	public long create(Client client) throws DaoException {
@@ -146,23 +145,6 @@ public class ClientDao {
 		}
 	}
 
-	public int ageClients(int id) throws DaoException {
-		try {
-			Connection conn = ConnectionManager.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(FIND_AGE_CLIENT_QUERY);
-			pstmt.setInt(1, id);
-
-			ResultSet rs = pstmt.executeQuery();
-
-			rs.next();
-			int age = rs.getInt("age");
-			return age;
-
-		} catch (SQLException e) {
-			throw new DaoException();
-		}
-	}
-
 	public ArrayList<Client> findClientByVehicleId(int vehicleId) throws DaoException {
 		try {
 			Connection conn = ConnectionManager.getConnection();
@@ -184,4 +166,23 @@ public class ClientDao {
 		}
 	}
 
+	public ArrayList<String> findEmails() throws DaoException {
+		try {
+			Connection conn = ConnectionManager.getConnection();
+			PreparedStatement stmt = conn.prepareStatement(FIND_CLIENTS_QUERY);
+			ResultSet rs = stmt.executeQuery();
+			ArrayList<String> emailList = new ArrayList<String>();
+			
+			while (rs.next()) {
+				emailList.add(rs.getString("email"));
+			}
+
+			conn.close();
+			return emailList;
+
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
+
+	}
 }

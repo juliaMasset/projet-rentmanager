@@ -52,7 +52,7 @@
                                     <label for="birthdate" class="col-sm-2 control-label">Date de naissance</label>
 
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="Date de naissance" required onchange="verifyAge()">
+                                        <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="Date de naissance" onchange="verifyAge()" required>
                                     </div>
                                 </div>
                                 <div class="alert alert-danger" role="alert" id="expirationWarning">
@@ -80,19 +80,24 @@
 
 <%@ include file="/WEB-INF/views/common/js_imports.jsp" %>
 <script>
+
+document.getElementById('expirationWarning').hidden = true;
+
     function verifyAge(){
         var Bdate = document.getElementById('birthdate').value;
         var Bday = +new Date(Bdate);
         if(((Date.now() - Bday) / (31557600000)) > 18){
-            console.log('ok');
+            console.log('age valide');
             document.getElementById('add').disabled = false;
             document.getElementById('expirationWarning').hidden = true;
         } else{
-            console.log('nok');
+            console.log('age non valide');
             document.getElementById('add').disabled = true;
             document.getElementById('expirationWarning').hidden = false;
         }
     } 
+
+
 </script>
 </body>
 </html>

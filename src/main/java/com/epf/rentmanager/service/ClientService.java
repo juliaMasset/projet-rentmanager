@@ -56,6 +56,15 @@ public class ClientService {
 		return null;
 	}
 	
+	public ArrayList<String> findEmails() throws ServiceException {
+		try {
+			return this.clientDao.findEmails();
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public int count() throws ServiceException {
 		try {
 			return this.clientDao.countClients();
@@ -65,14 +74,6 @@ public class ClientService {
 		return 0;
 	}
 	
-	public int ageClient(int id) throws ServiceException {
-		try {
-			return this.clientDao.ageClients(id);
-		} catch (DaoException e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
 	
 	public long update(Client client) throws ServiceException {
 		try {

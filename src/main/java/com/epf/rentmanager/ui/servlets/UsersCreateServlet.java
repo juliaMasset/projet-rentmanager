@@ -32,7 +32,12 @@ public class UsersCreateServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		 try {
+	            request.setAttribute("mails", clientService.findEmails());
+	            
+	        } catch (ServiceException e) {
+	            e.printStackTrace();
+	        }
 		getServletContext().getRequestDispatcher("/WEB-INF/views/users/create.jsp").forward(request, response);
 
 	}
@@ -56,5 +61,7 @@ public class UsersCreateServlet extends HttpServlet {
 		response.sendRedirect("/rentmanager/users");  
 		
 	}
+	
+	
 }
 

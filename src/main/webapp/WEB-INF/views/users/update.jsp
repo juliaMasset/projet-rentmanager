@@ -38,7 +38,7 @@
                                         class="col-sm-2 control-label">Nom</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="last_name"
-                                            name="last_name" placeholder="Nom" value="${user.lastname}" required>
+                                            name="last_name" placeholder="Nom" value="${user.lastname}" minlength="3" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -47,7 +47,7 @@
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="first_name"
                                             name="first_name" placeholder="Prenom"
-                                            value="${user.firstname}" required>
+                                            value="${user.firstname}" minlength="3" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -65,13 +65,13 @@
                                     <div class="col-sm-10">
                                         <input type="date" class="form-control" id="birthdate"
                                             name="birthdate" placeholder="Naissance"
-                                            value="${user.birthdate}" required>
+                                            value="${user.birthdate}" onchange="verifyAge()" required>
                                     </div>
                                 </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right">Ajouter</button>
+                                <button type="submit" class="btn btn-info pull-right" id="add">Ajouter</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
@@ -87,6 +87,23 @@
     <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </div>
 <!-- ./wrapper -->
+                                      
+<script>
+    function verifyAge(){
+        var Bdate = document.getElementById('birthdate').value;
+        var Bday = +new Date(Bdate);
+        if(((Date.now() - Bday) / (31557600000)) > 18){
+            console.log('age valide');
+            document.getElementById('add').disabled = false;
+            document.getElementById('expirationWarning').hidden = true;
+        } else{
+            console.log('age non valide');
+            document.getElementById('add').disabled = true;
+            document.getElementById('expirationWarning').hidden = false;
+        }
+    } 
+
+</script>
 
 <%@ include file="/WEB-INF/views/common/js_imports.jsp" %>
 </body>
