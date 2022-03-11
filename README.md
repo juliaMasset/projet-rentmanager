@@ -9,6 +9,7 @@
 
 Home:
 - Affichage du nombre de clients, vehicules et reservations
+- possibilité de cliquer sur les images pour être redirigé vers la page concernée
 
 Client:
 - Create, update, details, delete (méthodes dans le DAO)
