@@ -26,27 +26,33 @@
     <section class="content">
       <!-- Info boxes -->
       <div class="row">
+
+        <a href="${pageContext.request.contextPath}/users">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
-
+        </a>
+            
             <div class="info-box-content">
               <span class="info-box-text">Utilisateurs</span>
               <span class="info-box-number">${nbClients}</span>
             </div>
+          
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
+        <a href="${pageContext.request.contextPath}/cars">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-car"></i></span>
-
+        </a>
             <div class="info-box-content">
               <span class="info-box-text">Voitures</span>
               <span class="info-box-number">${nbVehicles}</span>
             </div>
+            
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
@@ -55,15 +61,16 @@
 
         <!-- fix for small devices only -->
         <div class="clearfix visible-sm-block"></div>
-
+        <a href="${pageContext.request.contextPath}/rents">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-green"><i class="fa fa-pencil"></i></span>
-
+        </a>
             <div class="info-box-content">
               <span class="info-box-text">Reservations</span>
               <span class="info-box-number">${nbRents}</span>
             </div>
+            
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
