@@ -1,0 +1,11 @@
+0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:47:59 +0100] "GET /rentmanager/home HTTP/1.1" 200 6192 http-bio-8080-exec-6 95
+0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:47:59 +0100] "GET /rentmanager/resources/css/AdminLTE.min.css HTTP/1.1" 304 - http-bio-8080-exec-8 14
+0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:47:59 +0100] "GET /rentmanager/resources/bower_components/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 - http-bio-8080-exec-4 12
+0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:47:59 +0100] "GET /rentmanager/resources/bower_components/bootstrap/dist/js/bootstrap.min.js HTTP/1.1" 304 - http-bio-8080-exec-4 2
+0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:47:59 +0100] "GET /rentmanager/resources/css/skins/_all-skins.min.css HTTP/1.1" 304 - http-bio-8080-exec-8 3
+0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:47:59 +0100] "GET /rentmanager/resources/js/demo.js HTTP/1.1" 404 1015 http-bio-8080-exec-8 4
+0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:47:59 +0100] "GET /rentmanager/resources/bower_components/fastclick/lib/fastclick.js HTTP/1.1" 404 1081 http-bio-8080-exec-1 5
+0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:47:59 +0100] "GET /rentmanager/resources/bower_components/jquery/dist/jquery.min.js HTTP/1.1" 304 - http-bio-8080-exec-10 4
+0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:47:59 +0100] "GET /rentmanager/resources/bower_components/bootstrap/dist/css/bootstrap.min.css HTTP/1.1" 304 - http-bio-8080-exec-2 6
+0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:47:59 +0100] "GET /rentmanager/resources/bower_components/Ionicons/css/ionicons.min.css HTTP/1.1" 404 1087 http-bio-8080-exec-6 57
+0:0:0:0:0:0:0:1 - - [11/Mar/2022:09:48:00 +0100] "GET /rentmanager/resources/bower_components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 304 - http-bio-8080-exec-9 4
